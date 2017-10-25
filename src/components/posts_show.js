@@ -31,19 +31,19 @@ class PostsShow extends Component {
       // console.log(post);
       return <div>Loading...</div>;
     }
-
-    console.log(this.props.post.items);
+    // post['0'] = this.props.post.items;
+    // console.log(post.items['0'].fields);
     
     return (
       <section className="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
         <div className="content">
-          <h1>{post.fields.title}</h1>
-          <div className="major" dangerouslySetInnerHTML={this.renderMarkdown(post.fields.content)} /> 
+          <h1>{post.items['0'].fields.title}</h1>
+          <div className="major" dangerouslySetInnerHTML={this.renderMarkdown(post.items['0'].fields.content)} /> 
           <br />
           <Link to={"/"} className="button big wide">Back</Link>
         </div>
         <div className="image">
-          <Asset assetId={post.fields.featuredImage.sys.id} />
+          <Asset assetId={post.items['0'].fields.featuredImage.sys.id} />
         </div>
       </section>
     );
