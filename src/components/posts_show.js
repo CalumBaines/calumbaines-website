@@ -26,11 +26,11 @@ class PostsShow extends Component {
     const { post } = this.props;
     
     if (!post) {
-      console.log(post);
+      // console.log(post);
       return <div>Loading...</div>;
     }
 
-    console.log(post.fields);
+    // console.log(post.fields);
     
     return (
       <section className="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
@@ -51,6 +51,7 @@ class PostsShow extends Component {
 function mapStateToProps(state) {
   // console.log(state.posts.post.items);
   return { post: state.posts.post };
+  // console.log(post);
 }
 
 export default connect(mapStateToProps, { fetchPost })(PostsShow);
