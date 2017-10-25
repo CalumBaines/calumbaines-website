@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import marked from 'marked';
 import { Link } from 'react-router';
 
+
 import { fetchPost } from '../actions/index';
 import Asset from './asset';
+import _ from 'lodash';
 
 class PostsShow extends Component {
 
@@ -24,13 +26,13 @@ class PostsShow extends Component {
 
   render() {
     const { post } = this.props;
-    
+    // console.log(post);
     if (!post) {
       // console.log(post);
       return <div>Loading...</div>;
     }
 
-    console.log(post.fields);
+    console.log(this.props.post.items);
     
     return (
       <section className="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">

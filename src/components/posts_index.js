@@ -9,7 +9,7 @@ import Asset from './asset';
 class PostsIndex extends Component {
   componentWillMount() {
     this.props.fetchPosts();
-    console.log(this.props.fetchPosts());
+    // console.log(this.props.fetchPosts());
   }
   renderPosts() {
     return this.props.posts.map((post, index) => {
