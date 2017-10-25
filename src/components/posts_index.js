@@ -25,7 +25,7 @@ class PostsIndex extends Component {
                   />
             </div>
             <br />
-            <Link to={"posts/" + post.sys.id} className="button big wide smooth-scroll-middle">Learn more</Link>
+            <Link to={"posts/" + post.fields.slug} className="button big wide smooth-scroll-middle">Learn more</Link>
           </div>
           <div className="image">
             <Asset assetId={post.fields.featuredImage.sys.id} />

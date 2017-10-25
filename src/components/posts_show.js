@@ -10,11 +10,11 @@ class PostsShow extends Component {
 
   componentDidMount() {
 
-    const { id } = this.props.params;
+    const { slug } = this.props.params;
     // const id = '18mPLYXdfgqY44YSOYWeca';
     // console.log(this.props.params);
     // console.log(slug);
-    this.props.fetchPost(id);
+    this.props.fetchPost(slug);
 }
   renderMarkdown(content) {
     return {
@@ -26,7 +26,7 @@ class PostsShow extends Component {
     const { post } = this.props;
     
     if (!post) {
-      console.log(post);
+      // console.log(post);
       return <div>Loading...</div>;
     }
 
