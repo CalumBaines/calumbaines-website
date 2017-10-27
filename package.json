@@ -18,10 +18,12 @@
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "file-loader": "^1.1.5",
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
+    "url-loader": "^0.6.2",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
@@ -37,6 +39,8 @@
     "react-router": "^2.0.1",
     "react-text-truncate": "^0.8.3",
     "redux": "^3.0.4",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "styled-components": "^2.2.2",
+    "styled-normalize": "^2.2.1"
   }
 }

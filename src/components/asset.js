@@ -10,7 +10,7 @@ class Asset extends Component {
     return this.props.assets.map((asset) => {
       if (asset.sys.id == this.props.assetId) {
         return (
-          <img src={asset.fields.file.url} alt={asset.fields.file.fileName} key={`${asset.sys.id}`}/>
+          <img src={asset.fields.file.url} alt={asset.fields.file.fileName} key={`${asset.sys.space.sys.id}`}/>
         );
       }
     });
