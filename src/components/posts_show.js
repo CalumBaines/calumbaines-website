@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import marked from 'marked';
 import { Link } from 'react-router';
 
+
 import { fetchPost } from '../actions/index';
 import Asset from './asset';
+import _ from 'lodash';
 
 class PostsShow extends Component {
 
   componentDidMount() {
 
-    const { id } = this.props.params;
+    const { slug } = this.props.params;
     // const id = '18mPLYXdfgqY44YSOYWeca';
     // console.log(this.props.params);
     // console.log(slug);
-    this.props.fetchPost(id);
+    this.props.fetchPost(slug);
 }
   renderMarkdown(content) {
     return {
@@ -24,24 +26,24 @@ class PostsShow extends Component {
 
   render() {
     const { post } = this.props;
-    
+    // console.log(post);
     if (!post) {
       // console.log(post);
       return <div>Loading...</div>;
     }
-
-    // console.log(post.fields);
+    // post['0'] = this.props.post.items;
+    // console.log(post.items['0'].fields);
     
     return (
       <section className="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
         <div className="content">
-          <h1>{post.fields.title}</h1>
-          <div className="major" dangerouslySetInnerHTML={this.renderMarkdown(post.fields.content)} /> 
+          <h1>{post.items['0'].fields.title}</h1>
+          <div className="major" dangerouslySetInnerHTML={this.renderMarkdown(post.items['0'].fields.content)} /> 
           <br />
           <Link to={"/"} className="button big wide">Back</Link>
         </div>
         <div className="image">
-          <Asset assetId={post.fields.featuredImage.sys.id} />
+          <Asset assetId={post.items['0'].fields.featuredImage.sys.id} />
         </div>
       </section>
     );
@@ -51,7 +53,6 @@ class PostsShow extends Component {
 function mapStateToProps(state) {
   // console.log(state.posts.post.items);
   return { post: state.posts.post };
-  // console.log(post);
 }
 
 export default connect(mapStateToProps, { fetchPost })(PostsShow);

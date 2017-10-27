@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextTruncate from 'react-text-truncate';
 import { Link } from 'react-router';
+import TitleBlock from './titleBlock';
+
+import styled from 'styled-components';
 
 import { fetchPosts } from '../actions/index';
 import Asset from './asset';
+
+
+const Button = styled(Link)`
+  color: orange;
+`
 
 class PostsIndex extends Component {
   componentWillMount() {
@@ -14,7 +22,7 @@ class PostsIndex extends Component {
   renderPosts() {
     return this.props.posts.map((post, index) => {
       return (
-        <section key={post.sys.id} className={`spotlight style1 orient-${index%2 ? 'right':'left'} content-align-left image-position-center onscroll-image-fade-in`}>
+        <section key={post.sys.id}>
           <div className="content">
             <h2>{post.fields.title}</h2>
             <div className="major">
@@ -25,7 +33,7 @@ class PostsIndex extends Component {
                   />
             </div>
             <br />
-            <Link to={"posts/" + post.sys.id} className="button big wide smooth-scroll-middle">Learn more</Link>
+            <Button to={"/posts/" + post.fields.slug} className="button big wide smooth-scroll-middle">Learn more</Button>
           </div>
           <div className="image">
             <Asset assetId={post.fields.featuredImage.sys.id} />
@@ -37,6 +45,7 @@ class PostsIndex extends Component {
   render() {
     return (
       <div>
+        <TitleBlock />
         {this.renderPosts()}
       </div>
     );

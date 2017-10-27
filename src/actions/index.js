@@ -17,21 +17,21 @@ export function fetchPosts() {
   };
 }
 
-// export function fetchPost(id) {
-//   const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=blogPost&fields.slug=${id}`);
-//   return {
-//     type: FETCH_POST,
-//     payload: request
-//   };
-// }
-
-export function fetchPost(id) {
-  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries/${id}?access_token=${API_TOKEN}&content_type=blogPost`);
+export function fetchPost(slug) {
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=blogPost&fields.slug=${slug}`);
   return {
     type: FETCH_POST,
     payload: request
   };
 }
+
+// export function fetchPost(id) {
+//   const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries/${id}?access_token=${API_TOKEN}&content_type=blogPost`);
+//   return {
+//     type: FETCH_POST,
+//     payload: request
+//   };
+// }
 export function fetchAsset(id) {
   const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/assets/${id}?access_token=${API_TOKEN}`);
 
