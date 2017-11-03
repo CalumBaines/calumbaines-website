@@ -30,6 +30,7 @@
   "dependencies": {
     "axios": "^0.16.0",
     "babel-preset-stage-1": "^6.1.18",
+    "datejs": "^1.0.0-rc3",
     "lodash": "^3.10.1",
     "marked": "^0.3.6",
     "react": "^0.14.3",

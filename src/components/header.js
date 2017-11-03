@@ -8,7 +8,7 @@ import linkedin from '../../assets/img/linkedin-logo.svg';
 import github from '../../assets/img/github-logo.svg';
 
 
-const Header = styled.header`
+const Head = styled.header`
     background-color: white;
     border-bottom: 1px solid #C5C5C5;
     margin-bottom: 80px;
@@ -78,10 +78,10 @@ const HeaderNav = styled.nav`
 `
 
 
-class Footer extends Component {
+class Header extends Component {
   render() {
     return(
-      <Header>
+      <Head>
         <HeaderContainer>
             <HeaderLeft>
                 <LogoLink to={"/"}>
@@ -102,9 +102,9 @@ class Footer extends Component {
                 <Link to={"/contact"}>Contact</Link>
             </HeaderNav>
         </HeaderContainer>
-      </Header>
+      </Head>
     );
   }
 }
 
-export default Footer;
+export default Header;

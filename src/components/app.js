@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Footer from './footer';
 import Header from './header';
 
 import styledNormalize from 'styled-normalize'
@@ -33,7 +32,6 @@ export default class App extends Component {
       <div>
         <Header/>
         {this.props.children}
-        <Footer/>
       </div>
     );
   }
