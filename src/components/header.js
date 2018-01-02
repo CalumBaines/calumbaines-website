@@ -10,8 +10,8 @@ import github from '../../assets/img/github-logo.svg';
 
 const Head = styled.header`
     background-color: white;
-    border-bottom: 1px solid #C5C5C5;
-    margin-bottom: 80px;
+    border-bottom: 1px solid #E7E7E7;
+    width: 100%;
 `
 
 const HeaderContainer = styled.div`
@@ -32,12 +32,10 @@ const Logo = styled.img`
     border-radius: 50%;
     height: 32px;
     width: 32px;
-    margin-right: 16px;
 `
 
 const LogoLink = styled(Link)`
     display: inline-flex;
-    border-right: 1px solid #F5F5F5;
     margin-right: 8px;
 `
 
@@ -50,12 +48,19 @@ const SocialLink = styled.a`
     }
 `
 
+const HeaderRight = styled.div`
+    margin-left: auto;
+    padding: 16px 0;
+    display: flex;
+`
+
 const HeaderNav = styled.nav`
     display: flex;
     align-items: center;
     a {
-        font-family: Raleway-Bold;
+        font-family: 'Raleway', sans-serif;
         font-size: 14px;
+        font-weight: 600;
         color: #656565;
         letter-spacing: 0;
         line-height: 14px;
@@ -70,10 +75,6 @@ const HeaderNav = styled.nav`
             border-bottom: 3px solid #656565;
             box-sizing: border-box;
         }
-
-        &:last-of-type {
-            margin-right: 0;
-        }
     }
 `
 
@@ -87,6 +88,14 @@ class Header extends Component {
                 <LogoLink to={"/"}>
                     <Logo src={logo} />
                 </LogoLink>
+            </HeaderLeft>
+            <HeaderNav>
+                <Link to={"/about"}>Work</Link>
+                <Link to={"/contact"}>Journal</Link>
+                <Link to={"/about"}>About</Link>
+                <Link to={"/contact"}>Contact</Link>
+            </HeaderNav>
+            <HeaderRight>
                 <SocialLink href="#na">
                     <img src={twitter} />
                 </SocialLink>
@@ -96,11 +105,7 @@ class Header extends Component {
                 <SocialLink href="#na">
                     <img src={github} />
                 </SocialLink>
-            </HeaderLeft>
-            <HeaderNav>
-                <Link to={"/about"}>About</Link>
-                <Link to={"/contact"}>Contact</Link>
-            </HeaderNav>
+            </HeaderRight>
         </HeaderContainer>
       </Head>
     );

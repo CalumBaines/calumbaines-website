@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import TextTruncate from 'react-text-truncate';
 import { Link } from 'react-router';
 import TitleBlock from './titleBlock';
+import CtaPanel from './ctaPanel';
 import LogoGrid from './logoGrid';
+import HomeBanner from './homeBanner';
+import SubscribeForm from './subscribe';
 import _ from 'lodash';
 import styled from 'styled-components';
 
@@ -14,6 +17,20 @@ import Asset from './asset';
 const Spotlight = styled(Link)`
   text-decoration: none;
   display: flex;
+  border: 1px solid rgba(197,197,197,0.5);
+  border-radius: 4px;
+  min-height: 250px;
+  background-color: white;
+  cursor: pointer;
+  transform: translateY(0px);
+  box-shadow: 0 0px 0px 0 rgba(104,104,104,0.15);
+  transition: .3s all ease-in-out;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px 0 rgba(104,104,104,0.15);
+  }
+
   @media (min-width: 900px) {
     &.Spotlight:nth-of-type(1) {
       grid-row: span 2;
@@ -24,9 +41,7 @@ const Spotlight = styled(Link)`
           border-radius: 4px 4px 0 0;
         }
         &:last-of-type {
-          border-left: 1px solid #C5C5C5;
           border-top: 0;
-          border-radius: 0 0 4px 4px;
           > div {
             width: 100%;
           }
@@ -37,11 +52,9 @@ const Spotlight = styled(Link)`
 `
 
 const ContentWrap = styled.div`
-  width: 100%;
-  padding: 32px 24px;
+  width: 150%;
+  padding: 16px;
   box-sizing: border-box;
-  border: 1px solid #C5C5C5;
-  border-left: 0;
   border-radius: 0 4px 4px 0;  
   display: flex;
   flex-flow: row wrap;
@@ -53,7 +66,7 @@ const Content = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: 20px;
+  font-size: 18px;
   margin: 0 0 8px 0;
   color: #656565;
   font-weight: 500;
@@ -76,7 +89,6 @@ const ImageWrap = styled.div`
   img {
     position: absolute;
     min-width: 100%;
-    z-index: -1;
     min-height: 100%;
     left: 50%;
     top: 50%;
@@ -111,6 +123,8 @@ const PostsWrapAlt = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-gap: 30px;
+  margin-bottom: 120px;
+
   @media (max-width: 900px) {
 		grid-template-columns: 1fr;
 	}
@@ -136,6 +150,27 @@ const PublishDate = styled.span`
 
 const ReadTime = styled.span`
   margin-left: 8px;
+`
+const TitleBg = styled.div`
+  background-color: #F5F5F5;
+  padding: 180px 0 40px 0;
+  margin-bottom: 80px;
+`
+
+const TitleContainer = styled.div`
+  width: calc(100% - 48px);
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 30px;
+  margin-bottom: 120px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 class PostsIndex extends Component {
@@ -174,11 +209,11 @@ class PostsIndex extends Component {
   
 
   renderFeatured() {
-    return this.props.posts.slice(0, 4).map((post, index, readTime) => {
+    return this.props.posts.slice(0, 2).map((post, index, readTime) => {
       return (
-        <Spotlight to={"/posts/" + post.fields.slug} key={post.sys.id}>
+        <Spotlight to={"/posts/" + post.fields.slug} key={post.fields.slug + post.sys.id}>
           <ImageWrap>
-            <Asset assetId={post.fields.featuredImage.sys.id} />
+            <Asset assetId={post.fields.thumbnail.sys.id} assetKey={index } />
           </ImageWrap>
           <ContentWrap>
             <Content>
@@ -197,13 +232,13 @@ class PostsIndex extends Component {
 
   renderPosts() {
     var postArray = this.props.posts
-    var removePosts = postArray.splice(0, 4)
+    var removePosts = postArray.splice(0, 2)
 
     return postArray.map((post, index, readTime) => {
       return (
         <Spotlight className="Spotlight" to={"/posts/" + post.fields.slug} key={post.sys.id}>
           <ImageWrap>
-            <Asset assetId={post.fields.featuredImage.sys.id} />
+            <Asset assetId={post.fields.thumbnail.sys.id} assetKey={index} />
           </ImageWrap>
           <ContentWrap>
             <Content>
@@ -222,14 +257,12 @@ class PostsIndex extends Component {
   render() {
     return (
       <div>
-        <TitleBlock />
-        <PostsWrap>
-          {this.renderFeatured()}
-        </PostsWrap>
-        <LogoGrid />
+        <HomeBanner />
+        <SubscribeForm />
         <PostsWrapAlt>
           {this.renderPosts()}
         </PostsWrapAlt>
+        <CtaPanel />
       </div>
     );
   }

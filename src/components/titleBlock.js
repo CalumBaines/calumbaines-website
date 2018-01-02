@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const TitleBlock = styled.section`
-    background-color: white;
-    margin-bottom: 100px;
+    grid-row: span 2;
 `
 
 const Container = styled.div`

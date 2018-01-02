@@ -6,11 +6,24 @@ class Asset extends Component {
   componentWillMount() {
     this.props.fetchAsset(this.props.assetId)
   }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(this.props.assetId + ' - props')
+  //   console.log(nextProps.assetId + ' - nextprops')
+  //   if (this.props.assetId !== nextProps.assetId) {
+  //     return true;
+  //   }
+  //   // if (this.state.count !== nextState.count) {
+  //   //   return true;
+  //   // }
+  //   return false;    
+  // }
+
   renderAsset() {
-    return this.props.assets.map((asset) => {
+    return this.props.assets.map((asset, index) => {
       if (asset.sys.id == this.props.assetId) {
+
         return (
-          <img src={asset.fields.file.url} alt={asset.fields.file.fileName} key={`${asset.sys.space.sys.id}`}/>
+          <img src={asset.fields.file.url} alt={asset.fields.file.fileName} key={index}/>
         );
       }
     });

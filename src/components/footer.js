@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
+import styled from 'styled-components';
+
+const Foot = styled.footer`
+  background-color: white;
+  position: absolute;
+  width: 100%;
+`
 
 class Footer extends Component {
   render() {
     return(
-      <footer className="wrapper style1 align-center">
+      <Foot>
 
-      </footer>
+      </Foot>
     );
   }
 }

@@ -113,6 +113,7 @@ const Position = styled.span`
     font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: #4A4A4A;
+    margin-left: 10px;
 `
 
 
