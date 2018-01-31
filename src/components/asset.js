@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAsset } from '../actions/index';
+import styled, { css } from 'styled-components';
+
+
+const RespImg = styled.img`
+    width: 100%;
+`
+
 
 class Asset extends Component {
 
@@ -10,8 +17,8 @@ class Asset extends Component {
     // console.log(this.props)
   }
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(this.props.assetKey + ' - props')
-    console.log(nextProps.assetId + ' - nextprops')
+    // console.log(this.props.assetKey + ' - props')
+    // console.log(nextProps.assetId + ' - nextprops')
     // console.log(nextState + ' - nextstate')
     return true;
     // if (nextState == null) {
@@ -26,12 +33,14 @@ class Asset extends Component {
     var assetArray = this.props.assets;
 
     console.log(assetArray)
+    var idx = 0;
     return assetArray.map((asset, index) => {
-      console.log(asset.sys.id + ' sys.id ' + asset.fields.file.fileName)
-      console.log(this.props.assetId + ' asset.id ' + asset.fields.file.fileName)
+      console.log(index)
+      // console.log(asset.sys.id + ' sys.id ' + asset.fields.file.fileName)
+      // console.log(this.props.assetId + ' asset.id ' + asset.fields.file.fileName)
       if (asset.sys.id == this.props.assetId) {
         return (
-          <img src={asset.fields.file.url} alt={asset.fields.file.fileName} key={index}/>
+          <RespImg src={asset.fields.file.url} alt={asset.fields.file.fileName} key={index}/>
         );
       }
     });
