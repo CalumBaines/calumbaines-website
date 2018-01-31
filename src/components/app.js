@@ -8,7 +8,7 @@ injectGlobal`
   ${styledNormalize}
   @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900|Raleway:400,400i,500,500i,600,600i,700,700i');
   
-  p, li, span {
+  p, li, span, a {
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
     line-height: 2;
@@ -21,8 +21,8 @@ injectGlobal`
   }
 
   h1 {
-    font-size: 48px;
-    line-height: 60px;
+    font-size: 41px;
+    line-height: 50px;
     margin-bottom: 24px;
   }
 
@@ -125,6 +125,9 @@ injectGlobal`
 `
 
 export default class App extends Component {
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
   render() {
     return (
       <div>

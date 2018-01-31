@@ -1,6 +1,34 @@
 import React, { Component } from 'react';
 
 import styled from 'styled-components';
+import twitter from '../../assets/img/twitter-logo.svg';
+import linkedin from '../../assets/img/linkedin-logo.svg';
+import github from '../../assets/img/github-logo.svg';
+
+const Container = styled.div`
+    width: calc(100% - 48px);
+    max-width: 650px;
+    margin: 80px auto 0;
+    padding: 0 24px;
+    text-align: center;
+`
+
+const SubscribeTitle = styled.h1`
+    padding-top: 112px;
+    margin-bottom: 16px;
+    font-size: 32px;
+`
+
+const SubscribePara = styled.p`
+    margin-top: 0;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0 30px;
+`
+
+const SubscribeBg = styled.div`
+    background-color: #F5F5F5;
+`
 
 const SubscribeField = styled.input`
     padding: 24px 32px;
@@ -22,13 +50,11 @@ const SubscribeLabel = styled.label`
 const SubFormContainer = styled.form`
     width: calc(100% - 48px);
     max-width: 600px;
-    margin: 32px auto 0;
-    padding: 0 24px;
+    margin: 0 auto;
+    padding: 32px 24px 136px;
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    display: flex;
-    margin-bottom: 136px;
 `
 
 const SubscribeButton = styled.input`
@@ -41,6 +67,27 @@ const SubscribeButton = styled.input`
     border-radius: 100px;
 `
 
+const SocialFooter = styled.div`
+    width: calc(100% - 48px);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+`
+
+const SocialLink = styled.a`
+    display: inline-flex;
+    padding: 0 8px;
+
+    &:hover {
+        
+    }
+`
+
 class SubscribeForm extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +98,11 @@ class SubscribeForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <SubscribeBg>
+                <Container>
+                    <SubscribeTitle>Newsletter</SubscribeTitle>
+                    <SubscribePara>Subscribe to my newsletter to recieve my latest articles, experiments and inspiration in your inbox.</SubscribePara>
+                </Container>
                 <SubFormContainer action="https://calumbaines.us11.list-manage.com/subscribe/post?" method="POST" noValidate>
                 <input type="hidden" name="u" value="6a526e38cd2ed0617d291eaff"/>
                 <input type="hidden" name="id" value="d6fdb98678"/>
@@ -73,7 +124,18 @@ class SubscribeForm extends React.Component {
                     <input type="email" name="b_email" tabIndex="-1" value="" placeholder="Email Address" id="b_email"/>
                 </div>
               </SubFormContainer>
-            </div>
+              <SocialFooter>
+                <SocialLink href="#na">
+                    <img src={twitter} />
+                </SocialLink>
+                <SocialLink href="#na">
+                    <img src={linkedin} />
+                </SocialLink>
+                <SocialLink href="#na">
+                    <img src={github} />
+                </SocialLink>
+            </SocialFooter>
+            </SubscribeBg>
         )
     }
 }

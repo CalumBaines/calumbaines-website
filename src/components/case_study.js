@@ -153,30 +153,6 @@ class PostsShow extends Component {
     }
   }
 
-  Date(dateStr) { 
-    // const date = new Date(dateStr).toString();
-    // const dateReformat = date.match(/^[a-zA-Z]{3} ([a-zA-Z]{3} \d{2} \d{4} \d{2}:\d{2})/);
-    // return dateReformat
-
-    function formatDate(date) {
-      var monthNames = [
-        "Jan", "Feb", "Mar",
-        "Apr", "May", "Jun", "Jul",
-        "Aug", "Sep", "Oct",
-        "Nov", "Dec"
-      ];
-    
-      var day = date.getDate();
-      var monthIndex = date.getMonth();
-      var year = date.getFullYear();
-    
-      return day + ' ' + monthNames[monthIndex] + ' ' + year;
-    }
-    
-    return formatDate(new Date());  // show current date-time in console
-
-  }
-
   render() {
     const { post } = this.props;
     // console.log(post);
@@ -204,7 +180,6 @@ class PostsShow extends Component {
         <ContentContainer>
           <Content>
             <PostTitle>{post.items['0'].fields.title}</PostTitle>
-            <PublishDate>{this.Date(post.items['0'].fields.date)}</PublishDate>
             <Content dangerouslySetInnerHTML={this.renderMarkdown(post.items['0'].fields.content)} /> 
             <br />
             <Cta>

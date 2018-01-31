@@ -1,13 +1,15 @@
 {
-  "name": "react-redux-base",
+  "name": "calum-baines-portfolio-blog",
   "version": "1.0.0",
-  "description": "Simple blog app for Redux with React and Babel support",
+  "description": "A simple blog and portfolio site for Calum Baines a designer & Developer based in sheffield",
   "main": "index.js",
-  "repository": "git@github.com:avishekjana/react-redux-contentful-blog.git",
+  "repository": "",
   "scripts": {
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "postinstall": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors --display-error-details",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack -p --config",
+    "deploy": "now --public"
   },
   "author": "",
   "license": "ISC",

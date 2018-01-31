@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 
 const Cta = styled.section`
@@ -41,20 +41,26 @@ const CtaSub = styled.p`
 `
 
 const Button = styled.a`
-    background-color: white;
-    padding: 20px 40px;
-    text-decoration: none;
-    color: #B993D6;
-    border: 1px solid white;
-    font-size: 14px;
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 2px;
-    transition: .4s all ease-in-out;
+  display: inline-block;
+  border-radius: 30px;
+  padding: 12px 0;
+  margin: 0.5rem 15px;
+  width: 200px;
+  background: transparent;
+  color: blue;
+  border: 2px solid white;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #4A4A4A;
+  text-align: center;
 
-    &:hover {
-        background-color: transparent;
-        color: white;
-    }
+  ${props => props.primary && css`
+    background: white;
+    border: 2px solid white;
+    color: #B993D6;
+  `}
 `
 
 
@@ -69,9 +75,12 @@ class CtaPanel extends Component {
                 <CtaSub>
                     Currently working as a Front-end Developer at Quba, an agency based in Sheffield. I have worked at a number of different agencies and a range of projects.
                 </CtaSub>
-                <Button href="#na">
-                    GET IN TOUCH
-                </Button>
+                <Button 
+                href="#na"
+                primary 
+            >
+                Get in touch
+            </Button>
             </CtaWrap>
         </Cta>
     );

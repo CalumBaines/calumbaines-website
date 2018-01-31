@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST = 'FETCH_POST';
+export const FETCH_CASESTUDIES = 'FETCH_CASESTUDIES';
+export const FETCH_CASESTUDY = 'FETCH_CASESTUDY';
 export const FETCH_ASSET = 'FETCH_ASSET';
 
 const API_BASE_URL = 'https://cdn.contentful.com';
@@ -18,9 +20,25 @@ export function fetchPosts() {
 }
 
 export function fetchPost(slug) {
-  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=blogPost&fields.slug=${slug}`);
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=caseStudy&fields.slug=${slug}`);
   return {
     type: FETCH_POST,
+    payload: request
+  };
+}
+
+export function fetchCaseStudies() {
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=caseStudy&order=sys.createdAt`);
+  return {
+    type: FETCH_CASESTUDIES,
+    payload: request
+  };
+}
+
+export function fetchCaseStudy(slug) {
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=blogPost&fields.slug=${slug}`);
+  return {
+    type: FETCH_CASESTUDY,
     payload: request
   };
 }

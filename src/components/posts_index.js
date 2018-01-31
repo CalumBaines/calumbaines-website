@@ -157,6 +157,24 @@ const TitleBg = styled.div`
   margin-bottom: 80px;
 `
 
+const SmallHeading = styled.div`
+  width: calc(100% - 48px);
+  max-width: 970px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+`
+
+const SmallHeadingWrap = styled.div`
+  border-bottom: 1px solid #E7E7E7;
+    h2 {
+      margin: 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #B993D6;
+      display: inline-block;
+      transform: translateY(1px);
+    }
+`
+
 const TitleContainer = styled.div`
   width: calc(100% - 48px);
   max-width: 1170px;
@@ -177,6 +195,9 @@ class PostsIndex extends Component {
   componentWillMount() {
     this.props.fetchPosts();
     // console.log(this.props.fetchPosts());
+  }
+  componentDidMount () {
+    window.scrollTo(0, 0)
   }
   readTime(str) { 
     const words =  str.split(" ").length;
@@ -208,32 +229,10 @@ class PostsIndex extends Component {
   }
   
 
-  renderFeatured() {
-    return this.props.posts.slice(0, 2).map((post, index, readTime) => {
-      return (
-        <Spotlight to={"/posts/" + post.fields.slug} key={post.fields.slug + post.sys.id}>
-          <ImageWrap>
-            <Asset assetId={post.fields.thumbnail.sys.id} assetKey={index } />
-          </ImageWrap>
-          <ContentWrap>
-            <Content>
-              <Title>{post.fields.title}</Title>
-              <Para>{post.fields.description}</Para>
-            </Content>
-            <Meta>
-              <PostType>{post.fields.tags}</PostType>
-              <MetaDetails><PublishDate>{this.Date(post.fields.date)}</PublishDate>  -  <ReadTime>{this.readTime(post.fields.content)} min read</ReadTime></MetaDetails>
-            </Meta>
-          </ContentWrap>
-        </Spotlight>
-      );
-    });
-  }
-
   renderPosts() {
     var postArray = this.props.posts
-    var removePosts = postArray.splice(0, 2)
-
+    // var removePosts = postArray.splice(0, 2)
+    console.log(this.props.posts);
     return postArray.map((post, index, readTime) => {
       return (
         <Spotlight className="Spotlight" to={"/posts/" + post.fields.slug} key={post.sys.id}>
@@ -258,11 +257,17 @@ class PostsIndex extends Component {
     return (
       <div>
         <HomeBanner />
-        <SubscribeForm />
+        <SmallHeading>
+          <SmallHeadingWrap>
+            <h2>Recent Articles</h2>
+          </SmallHeadingWrap>
+        </SmallHeading>
         <PostsWrapAlt>
+          {/* {this.renderFeatured()} */}
           {this.renderPosts()}
         </PostsWrapAlt>
         <CtaPanel />
+        <SubscribeForm />
       </div>
     );
   }

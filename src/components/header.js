@@ -90,8 +90,8 @@ class Header extends Component {
                 </LogoLink>
             </HeaderLeft>
             <HeaderNav>
-                <Link to={"/about"}>Work</Link>
-                <Link to={"/contact"}>Journal</Link>
+                <Link to={"/work"}>Work</Link>
+                {/* <Link to={"/journal"}>Journal</Link> */}
                 <Link to={"/about"}>About</Link>
                 <Link to={"/contact"}>Contact</Link>
             </HeaderNav>
