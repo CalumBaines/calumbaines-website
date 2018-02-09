@@ -232,7 +232,7 @@ class PostsIndex extends Component {
   renderPosts() {
     var postArray = this.props.posts
     // var removePosts = postArray.splice(0, 2)
-    console.log(this.props.posts);
+    // console.log(this.props.posts);
     return postArray.map((post, index, readTime) => {
       return (
         <Spotlight className="Spotlight" to={"/posts/" + post.fields.slug} key={post.sys.id}>

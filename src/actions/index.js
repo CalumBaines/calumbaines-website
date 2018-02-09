@@ -20,7 +20,7 @@ export function fetchPosts() {
 }
 
 export function fetchPost(slug) {
-  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=caseStudy&fields.slug=${slug}`);
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=blogPost&fields.slug=${slug}`);
   return {
     type: FETCH_POST,
     payload: request
@@ -36,7 +36,7 @@ export function fetchCaseStudies() {
 }
 
 export function fetchCaseStudy(slug) {
-  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=blogPost&fields.slug=${slug}`);
+  const request = axios.get(`${API_BASE_URL}/spaces/${API_SPACE_ID}/entries?access_token=${API_TOKEN}&content_type=caseStudy&fields.slug=${slug}`);
   return {
     type: FETCH_CASESTUDY,
     payload: request

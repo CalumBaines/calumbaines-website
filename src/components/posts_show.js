@@ -198,9 +198,9 @@ class PostsShow extends Component {
     
     return (
       <div>
-        {/* <MainImage>
+        <MainImage>
           <Asset assetId={post.items['0'].fields.featuredImage.sys.id} keyCode={post.items['0'].fields.featuredImage.sys.id + post.items['0'].fields.date} />
-        </MainImage> */}
+        </MainImage>
         <ContentContainer>
           <Content>
             <PostTitle>{post.items['0'].fields.title}</PostTitle>
@@ -209,7 +209,7 @@ class PostsShow extends Component {
             <br />
             <Cta>
               <Button 
-                  href="#na"
+                  to={"/"}
                   primary 
               >
                   Back to all articles

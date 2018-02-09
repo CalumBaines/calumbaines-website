@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 
 const RespImg = styled.img`
-    width: 100%;
+  
 `
 
 
@@ -32,15 +32,14 @@ class Asset extends Component {
   renderAsset() {
     var assetArray = this.props.assets;
 
-    console.log(assetArray)
-    var idx = 0;
+    // console.log(assetArray + ' thi.props')
     return assetArray.map((asset, index) => {
-      console.log(index)
+      // console.log(index)
       // console.log(asset.sys.id + ' sys.id ' + asset.fields.file.fileName)
       // console.log(this.props.assetId + ' asset.id ' + asset.fields.file.fileName)
       if (asset.sys.id == this.props.assetId) {
         return (
-          <RespImg src={asset.fields.file.url} alt={asset.fields.file.fileName} key={index}/>
+          <RespImg src={asset.fields.file.url} alt={asset.fields.file.fileName} key={asset.fields.file.url + this.props.assetId}/>
         );
       }
     });

@@ -17,6 +17,7 @@ class ResponsiveImage extends React.Component {
   render () {
     return (
       <img styleName="responsiveImage"
+      // ${API_BASE_URL}/spaces/${API_SPACE_ID}/assets/${id}?access_token=${API_TOKEN}
             src={ this.state.mounted && `${this.state.src}?w=${this.state.width}`}
             alt={this.state.alt}
             ref={node => this.node = node}/>

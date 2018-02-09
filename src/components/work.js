@@ -10,13 +10,6 @@ import _ from 'lodash';
 import { fetchCaseStudies } from '../actions/index';
 import Asset from './asset';
 
-import kingspanWork from '../../assets/img/kingspan-work.png';
-import ruddocksWork from '../../assets/img/ruddocks-work.png';
-import qubaWork from '../../assets/img/quba-work.png';
-import resoneWork from '../../assets/img/resone-work.png';
-import jorisideWork from '../../assets/img/joriside-work.png';
-import interledWork from '../../assets/img/interled-work.png';
-
 
 const Container = styled.div`
     width: calc(100% - 48px);
@@ -70,6 +63,10 @@ const WorkImgContainer = styled.div`
   .WorkList--Small & {
     width: 100%;
   }
+
+  img {
+    width: 100%;
+  }
 `
 
 const WorkImg = styled(Asset)`
@@ -113,7 +110,7 @@ const WorkListItem = styled.div`
   display: flex;
   align-items: center;
 
-  ${props => props.small && css`
+  &:not(:first-child) {
     width: calc(50% - 15px);
     padding: 20px;
     flex-wrap: wrap;
@@ -123,7 +120,7 @@ const WorkListItem = styled.div`
     &:nth-of-type(2n) {
       margin-right: 30px;
     }
-  `}
+  }
 `
 
 const WorkButton = styled(Link)`
@@ -156,7 +153,7 @@ const WorkButton = styled(Link)`
 class Work extends Component {
   componentWillMount() {
     this.props.fetchCaseStudies();
-    console.log(this.props.fetchCaseStudies());
+    // console.log(this.props.fetchCaseStudies());
   }
   componentDidMount () {
     window.scrollTo(0, 0)
@@ -164,22 +161,25 @@ class Work extends Component {
 
   renderWork() {
     var workArray = this.props.caseStudies
-    // console.log(this.props.caseStudies);
+    // console.log(workArray);
     // var removePosts = postArray.splice(0, 2)
     return workArray.map((work, index) => {
-      // console.log(work);
-      console.log(work.sys.id);
+      console.log(work.fields.thumbnail.sys.id);
+      // console.log(work + ' sys');
+      var cls = (index !== 0) ? 'WorkList--Small' : 'item'; 
+
       return (
-          <WorkListItem key={work.sys.id}>
+          <WorkListItem key={work.sys.id} className={ cls }>
           <WorkImgContainer>
-              <WorkImg assetId={work.fields.featuredImage.sys.id} assetKey={index} />
-              {/* <ResponsiveImage src={ work.fields.featuredImage.sys.id } alt={entry.fields.title} /> */}
+              <WorkImg assetId={work.fields.thumbnail.sys.id} assetKey={index} />
+              {/* <ResponsiveImage src={ gallery.fields.coverImage.fields.file.url } alt={ `Open Gallery ${gallery.fields.title}` }/> */}
+              {/* <ResponsiveImage src={ work.fields.featuredImage.sys.id } alt={work.fields.featuredImage.fileName} /> */}
             </WorkImgContainer>
             <WorkContent>
               <WorkTitle>{work.fields.title}</WorkTitle>
               <WorkPara>{work.fields.description}</WorkPara>
               <WorkButton 
-                to={"/posts/" + work.fields.slug} 
+                to={"/work/" + work.fields.slug} 
                 primary 
               >
                 View case study
@@ -203,7 +203,20 @@ class Work extends Component {
             </Container>
             <WorkList>
               {this.renderWork()}
+                <WorkListItem small className="WorkList--Small">
+                  <WorkContent>
+                    <WorkTitle>Looking to start a new project?</WorkTitle>
+                    <WorkPara>If you have a project you think I might be interested in, please get in touch. I am always on the lookout for exciting work and great companies to collaborate with.</WorkPara>
+                    <WorkButton 
+                      href="#na"
+                      primary 
+                    >
+                      Get in touch
+                    </WorkButton>
+                  </WorkContent>
+                </WorkListItem>
             </WorkList>
+            <SubscribeForm />
       </div>
     );
   }

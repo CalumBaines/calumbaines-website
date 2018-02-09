@@ -63,8 +63,8 @@ class HomeBanner extends Component {
     return(
         <div>
             <Container>
-                <Title>I’m Calum Baines, a front end developer with a passion for design an understanding of CMS' and always strive to create the best user experience. </Title>
-                {/* <Para>I work with companies ranging from startups to international corporations. I am currently working full time as a Front-end Developer in Sheffield but constantly on the look out for exciting opportunities and side projects to get stuck in to, so dont be afraid to get in touch.</Para> */}
+                <Title>I’m Calum Baines, a Front-end Developer with a passion for design and UX, based in Sheffield. </Title>
+                <Para>I work with companies ranging from startups to international corporations. I am currently working full time as a Front-end Developer in Sheffield but constantly on the look out for exciting opportunities and side projects to get stuck in to, so dont be afraid to get in touch.</Para>
                 <Cta>
                     <Button 
                         href="#na"

@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import styled, { css } from 'styled-components';
 import SubscribeForm from './subscribe';
 
-import { fetchPost } from '../actions/index';
+import { fetchCaseStudy } from '../actions/index';
 import Asset from './asset';
 import _ from 'lodash';
 
@@ -16,7 +16,15 @@ const ContentContainer = styled.section`
   padding: 0 24px;
   display: flex;
   flex-wrap: wrap;
-  padding-top: 40px;
+  padding-top: 0;
+`
+
+const TitleContainer = styled.div`
+    width: calc(100% - 48px);
+    max-width: 770px;
+    margin: 80px auto 0;
+    padding: 0 24px;
+    text-align: center;
 `
 
 const MainImage = styled.div`
@@ -24,7 +32,6 @@ const MainImage = styled.div`
   max-width: 970px;
   margin: 0 auto;
   padding: 0 24px;
-  padding-top: 144px;
 
   img {
     width: 100%;
@@ -36,9 +43,10 @@ const PostTitle = styled.h1`
   margin-bottom: 16px;
 `
 
-const PublishDate = styled.p`
+const WorkDesc = styled.p`
   text-align: center;
   margin-bottom: 32px;
+  padding: 0 48px;
 `
 
 const Content = styled.div`
@@ -137,15 +145,15 @@ const Button = styled(Link)`
 
 
 
-class PostsShow extends Component {
+class CaseStudy extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     window.scrollTo(0, 0)
     const { slug } = this.props.params;
     // const id = '18mPLYXdfgqY44YSOYWeca';
-    // console.log(this.props.params);
+    console.log(this.props.params + ' params');
     // console.log(slug);
-    this.props.fetchPost(slug);
+    this.props.fetchCaseStudy(slug);
 }
   renderMarkdown(content) {
     return {
@@ -154,9 +162,10 @@ class PostsShow extends Component {
   }
 
   render() {
-    const { post } = this.props;
-    // console.log(post);
-    if (!post) {
+    const { caseStudy } = this.props;
+    // console.log(caseStudy);
+    // console.log(caseStudy.items['0'].fields.featuredImage.sys.id)      
+    if (!caseStudy) {
       // console.log(post);
       return (
         <div className="Loader">
@@ -174,20 +183,23 @@ class PostsShow extends Component {
     
     return (
       <div>
-        {/* <MainImage>
-          <Asset assetId={post.items['0'].fields.featuredImage.sys.id} keyCode={post.items['0'].fields.featuredImage.sys.id + post.items['0'].fields.date} />
-        </MainImage> */}
+        <TitleContainer>
+          <PostTitle>{caseStudy.items['0'].fields.title}</PostTitle>
+          <WorkDesc>{caseStudy.items['0'].fields.description}</WorkDesc>
+        </TitleContainer>
+        <MainImage>
+          <Asset assetId={caseStudy.items['0'].fields.thumbnail.sys.id} keyCode={caseStudy.items['0'].fields.featuredImage.sys.id + caseStudy.items['0'].fields.date} />
+        </MainImage>
         <ContentContainer>
           <Content>
-            <PostTitle>{post.items['0'].fields.title}</PostTitle>
-            <Content dangerouslySetInnerHTML={this.renderMarkdown(post.items['0'].fields.content)} /> 
+            <Content dangerouslySetInnerHTML={this.renderMarkdown(caseStudy.items['0'].fields.content)} />  
             <br />
             <Cta>
               <Button 
-                  href="#na"
+                  to={"/work"}
                   primary 
               >
-                  Back to all articles
+                  Back to all work
               </Button>
             </Cta>
           </Content>
@@ -199,9 +211,9 @@ class PostsShow extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state.posts.post.items);
-  return { post: state.posts.post };
+  // console.log(state.work.caseStudy + ' state work');
+  return { caseStudy: state.work.caseStudy };
 }
 
-export default connect(mapStateToProps, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchCaseStudy })(CaseStudy);
 
