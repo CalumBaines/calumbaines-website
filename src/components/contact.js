@@ -11,18 +11,40 @@ const Container = styled.div`
     max-width: 770px;
     margin: 80px auto 0;
     padding: 0 24px;
-    text-align: center;
+    @media only screen and (min-width: 768px) {
+        display: flex;
+    }
 `
 
 const Title = styled.h1`
     margin-bottom: 24px;
 `
+const TitleWrap = styled.div`
+    text-align: left;
+    padding-right: 20%;
+    @media only screen and (min-width: 768px) {
+        width: 70%;
+        flex: 1.8;
+    }
+`
+
+const ContactDetails = styled.div`
+    @media only screen and (min-width: 768px) {
+        width: 30%;
+        margin-top: 100px;
+        flex: 1;
+    }
+`
+
+const ContactInfo = styled.p`
+    margin: 0;
+`
+
 
 const Para = styled.p`
     margin-top: 0;
     font-size: 18px;
     line-height: 24px;
-    padding: 0 30px;
 `
 
 const ParaHalf = styled.p`
@@ -42,25 +64,11 @@ const ParaHalf = styled.p`
     }
 `
 
-const Meta = styled.span`
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-`
 
-const AboutImg = styled.div`
-    width: calc(100% - 48px);
-    max-width: 970px;
-    margin: 0 auto;
-    padding: 0 24px;
-    margin-top: 136px;
-    img {
-        width: 100%;
-    }
-`
 
-class About extends Component {
+
+
+class Contact extends Component {
     componentDidMount () {
         window.scrollTo(0, 0)
     }
@@ -68,21 +76,20 @@ class About extends Component {
         return(
             <div>
                 <Container>
-                    <Title>About me</Title>
-                    <Para><b>I’m a Designer and Developer who loves solving problems.</b></Para>
-                    <Para>Working in the industry for the last five years I have been involved in a great range of projects and worked at a number of agencies based in the UK. </Para>
+                    <TitleWrap>
+                        <Title>Say hello</Title>
+                        <Para>If you’re looking to hire me or have a chat about my latest blog post, I’d love to hear from you.</Para>
+                        <Para>You can also sign-up to my newsletter to keep up to date with my latest work and articles.</Para>
+                    </TitleWrap>
+                    <ContactDetails>
+                        <ContactInfo><b>T </b>07855 466485</ContactInfo>
+                        <ContactInfo><b>E </b>calumrhysbaines@gmail.com</ContactInfo>
+                    </ContactDetails>
                 </Container>
-                <AboutImg>
-                    <img src={calumLrg} />
-                </AboutImg>
-                <Container>
-                    <ParaHalf>Currently working as a Front-end Developer at an agency based in Sheffield. I have worked at a number of different agencies and been involved in a range of projects over the years. My experiences with clients range from global corporations to local businesses, including: NHS, Residence One, Taylor Wimpey, InterLED, Joris Ide, Imeche, Efficiency North, Ruddocks and Kingspan. <br/> I’m always on the lookout for exciting projects and great people to work with, please get in touch if you think we could work together in anyway or even want to contact me about something random. <br /> My work revolves around one simple rule ‘KEEP IT SIMPLE’. <br />In this industry we often try to over complicate everything to achieve the best but in reality the most simple ideas are often the best. <br /> I have a passion for creating reusable, accessible and modular code, using the latest techniques and technology I am constantly improving my skills and looking for better ways to work. </ParaHalf>
-                </Container>
-                <LogoGrid />
                 <SubscribeForm />                
             </div>
         );
     }
 }
 
-export default About;
+export default Contact;

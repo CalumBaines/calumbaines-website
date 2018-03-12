@@ -42,9 +42,11 @@ const SubscribeField = styled.input`
 
 const SubscribeLabel = styled.label`
     display: inline-block;
-    width: 70%;
+    width: 60%;
     margin-right: 30px;
-
+    @media only screen and (min-width: 768px) {
+        width: 70%;
+    }
 `
 
 const SubFormContainer = styled.form`
@@ -63,8 +65,11 @@ const SubscribeButton = styled.input`
     padding: 24px;
     display: inline-block;
     color: white;
-    width: calc(30% - 30px);
     border-radius: 100px;
+    width: calc(40% - 30px);
+    @media only screen and (min-width: 768px) {
+        width: calc(30% - 30px);
+    }
 `
 
 const SocialFooter = styled.div`
@@ -125,13 +130,13 @@ class SubscribeForm extends React.Component {
                 </div>
               </SubFormContainer>
               <SocialFooter>
-                <SocialLink href="#na">
+                <SocialLink target="_blank" href="https://twitter.com/calumbaines">
                     <img src={twitter} />
                 </SocialLink>
-                <SocialLink href="#na">
+                <SocialLink target="_blank" href="https://www.linkedin.com/in/calumbaines/">
                     <img src={linkedin} />
                 </SocialLink>
-                <SocialLink href="#na">
+                <SocialLink target="_blank" href="https://github.com/CalumBaines">
                     <img src={github} />
                 </SocialLink>
             </SocialFooter>

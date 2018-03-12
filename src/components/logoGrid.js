@@ -128,7 +128,7 @@ class LogoGrid extends Component {
             </ImageWrap>
             <QuoteContainer>
                 <Quote>
-                    <p>Currently working as a Front-end Developer at Quba, an agency based in Sheffield. I have worked at a number of different agencies and a range of projects over the past couple of years. </p>
+                    <p>It has been great working with Calum on the recent project. He has proven a valuable asset to growing our business and bringing our site up to date. I would definitely recomend working with him on any project.</p>
                     <Name>Nigel Wills</Name>
                     <Position>Managing Director</Position>
                 </Quote>

@@ -42,7 +42,9 @@ const PublishDate = styled.p`
 `
 
 const Content = styled.div`
-  padding: 0 48px;
+  @media only screen and (min-width: 768px) {
+    padding: 0 48px;
+  }
   img {
     width: calc(100% + 96px);
     margin: 24px 0;

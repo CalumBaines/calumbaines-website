@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import styled, { css } from 'styled-components'
 
@@ -21,8 +22,10 @@ const Para = styled.p`
     margin-top: 0;
     font-size: 18px;
     line-height: 24px;
-    padding: 0 30px;
     margin-bottom: 0;
+    @media only screen and (min-width: 768px) {
+        padding: 0 30px;
+    }
 `
 
 const Meta = styled.span`
@@ -36,7 +39,7 @@ const Cta = styled.div`
     margin: 40px auto 0;
 `
 
-const Button = styled.a`
+const Button = styled(Link)`
   display: inline-block;
   border-radius: 30px;
   padding: 12px 0;
@@ -67,13 +70,13 @@ class HomeBanner extends Component {
                 <Para>I work with companies ranging from startups to international corporations. I am currently working full time as a Front-end Developer in Sheffield but constantly on the look out for exciting opportunities and side projects to get stuck in to, so dont be afraid to get in touch.</Para>
                 <Cta>
                     <Button 
-                        href="#na"
+                        to={"/contact"}
                         primary 
                     >
                         Get in touch
                     </Button>
                     <Button 
-                        href="#na"
+                        to={"/work"}
                     >
                         View my work
                     </Button>

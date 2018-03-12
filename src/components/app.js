@@ -7,6 +7,7 @@ import { injectGlobal } from 'styled-components'
 injectGlobal`
   ${styledNormalize}
   @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900|Raleway:400,400i,500,500i,600,600i,700,700i');
+  @import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
   
   p, li, span, a {
     font-family: 'Raleway', sans-serif;
@@ -21,9 +22,14 @@ injectGlobal`
   }
 
   h1 {
-    font-size: 41px;
-    line-height: 50px;
+    font-size: 32px;
+    line-height: 1;
     margin-bottom: 24px;
+    @media only screen and (min-width: 768px) {
+      font-size: 41px;
+      line-height: 50px;
+      margin-bottom: 24px;
+    }
   }
 
   .Loader {

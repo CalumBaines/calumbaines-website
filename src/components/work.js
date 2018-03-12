@@ -32,8 +32,12 @@ const Para = styled.p`
 
 const WorkContent = styled.div`
   margin-bottom: 16px;
-  width: 40%;
-
+  width: 70%;
+  text-align: center;
+  @media only screen and (min-width: 768px) {
+    width: 40%;
+    text-align: left;
+  }
   .WorkList--Small & {
     width: 70%;
     margin: 24px auto 0;
@@ -57,9 +61,11 @@ const WorkPara = styled.p`
   display: block;
 `
 const WorkImgContainer = styled.div`
-  width: calc(60% - 30px);
+  width: 100%;
   margin-right: 30px;
-
+  @media only screen and (min-width: 768px) {
+    width: calc(60% - 30px);
+  }
   .WorkList--Small & {
     width: 100%;
   }
@@ -93,6 +99,9 @@ const ExternalLink = styled.a`
   font-size: 12px;
   color: #656565;
   text-decoration: none;
+  .fa-external-link-alt {
+    margin-left: 8px;
+  }
 `
 
 const WorkExternal = styled.div`
@@ -109,17 +118,26 @@ const WorkListItem = styled.div`
   margin-bottom: 30px;
   display: flex;
   align-items: center;
-
+  padding: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  
   &:not(:first-child) {
-    width: calc(50% - 15px);
+    width: 100%;
     padding: 20px;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-
-    &:nth-of-type(2n) {
-      margin-right: 30px;
+    @media only screen and (min-width: 768px) {
+      width: calc(50% - 15px);
     }
+    &:nth-of-type(2n) {
+      @media only screen and (min-width: 768px) {
+        margin-right: 30px;
+      }
+    }
+
   }
 `
 
@@ -164,7 +182,7 @@ class Work extends Component {
     // console.log(workArray);
     // var removePosts = postArray.splice(0, 2)
     return workArray.map((work, index) => {
-      console.log(work.fields.thumbnail.sys.id);
+      // console.log(work.fields.thumbnail.sys.id);
       // console.log(work + ' sys');
       var cls = (index !== 0) ? 'WorkList--Small' : 'item'; 
 
@@ -185,8 +203,9 @@ class Work extends Component {
                 View case study
               </WorkButton>
               <WorkExternal>
-                <ExternalLink href="#na">
+                <ExternalLink target="_blank" href={work.fields.websiteUrl}>
                   Visit the live site
+                  <i className="fas fa-external-link-alt"></i>
                 </ExternalLink>
               </WorkExternal>
             </WorkContent>
@@ -208,7 +227,7 @@ class Work extends Component {
                     <WorkTitle>Looking to start a new project?</WorkTitle>
                     <WorkPara>If you have a project you think I might be interested in, please get in touch. I am always on the lookout for exciting work and great companies to collaborate with.</WorkPara>
                     <WorkButton 
-                      href="#na"
+                      to={"/contact"}
                       primary 
                     >
                       Get in touch

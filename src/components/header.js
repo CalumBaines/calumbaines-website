@@ -49,9 +49,13 @@ const SocialLink = styled.a`
 `
 
 const HeaderRight = styled.div`
-    margin-left: auto;
-    padding: 16px 0;
-    display: flex;
+
+    display: none;
+    @media only screen and (min-width: 768px) {
+        margin-left: auto;
+        padding: 16px 0;
+        display: flex;
+    }
 `
 
 const HeaderNav = styled.nav`
@@ -59,18 +63,21 @@ const HeaderNav = styled.nav`
     align-items: center;
     a {
         font-family: 'Raleway', sans-serif;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
         color: #656565;
         letter-spacing: 0;
-        line-height: 14px;
+        line-height: 1;
         text-decoration: none;
         margin: 0 20px;
         padding: 0 8px;
         height: 100%;
         display: flex;
         align-items: center;
-        
+        @media only screen and (min-width: 768px) {
+            font-size: 14px;
+            line-height: 1;
+        }
         &.active {
             border-bottom: 3px solid #656565;
             box-sizing: border-box;
@@ -96,13 +103,13 @@ class Header extends Component {
                 <Link to={"/contact"}>Contact</Link>
             </HeaderNav>
             <HeaderRight>
-                <SocialLink href="#na">
+                <SocialLink target="_blank" href="https://twitter.com/calumbaines">
                     <img src={twitter} />
                 </SocialLink>
-                <SocialLink href="#na">
+                <SocialLink target="_blank" href="https://www.linkedin.com/in/calumbaines/">
                     <img src={linkedin} />
                 </SocialLink>
-                <SocialLink href="#na">
+                <SocialLink target="_blank" href="https://github.com/CalumBaines">
                     <img src={github} />
                 </SocialLink>
             </HeaderRight>

@@ -257,15 +257,14 @@ class PostsIndex extends Component {
     return (
       <div>
         <HomeBanner />
-        <SmallHeading>
+        {/* <SmallHeading>
           <SmallHeadingWrap>
             <h2>Recent Articles</h2>
           </SmallHeadingWrap>
-        </SmallHeading>
-        <PostsWrapAlt>
-          {/* {this.renderFeatured()} */}
+        </SmallHeading> */}
+        {/* <PostsWrapAlt>
           {this.renderPosts()}
-        </PostsWrapAlt>
+        </PostsWrapAlt> */}
         <CtaPanel />
         <SubscribeForm />
       </div>

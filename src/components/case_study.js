@@ -50,7 +50,9 @@ const WorkDesc = styled.p`
 `
 
 const Content = styled.div`
-  padding: 0 48px;
+  @media only screen and (min-width: 768px) {
+    padding: 0 48px;
+  }
   img {
     width: calc(100% + 96px);
     margin: 24px 0;
@@ -143,6 +145,19 @@ const Button = styled(Link)`
   `}
 `
 
+const ExternalLink = styled.a`
+  font-size: 12px;
+  color: #656565;
+  text-decoration: none;
+  .fa-external-link-alt {
+    margin-left: 8px;
+  }
+`
+
+const WorkExternal = styled.div`
+  margin-top: 48px;
+`
+
 
 
 class CaseStudy extends Component {
@@ -151,7 +166,7 @@ class CaseStudy extends Component {
     window.scrollTo(0, 0)
     const { slug } = this.props.params;
     // const id = '18mPLYXdfgqY44YSOYWeca';
-    console.log(this.props.params + ' params');
+    // console.log(this.props.params + ' params');
     // console.log(slug);
     this.props.fetchCaseStudy(slug);
 }
@@ -186,6 +201,12 @@ class CaseStudy extends Component {
         <TitleContainer>
           <PostTitle>{caseStudy.items['0'].fields.title}</PostTitle>
           <WorkDesc>{caseStudy.items['0'].fields.description}</WorkDesc>
+          <WorkExternal>
+            <ExternalLink target="_blank" href={caseStudy.items['0'].fields.websiteUrl}>
+              Visit the live site
+              <i className="fas fa-external-link-alt"></i>
+            </ExternalLink>
+          </WorkExternal>
         </TitleContainer>
         <MainImage>
           <Asset assetId={caseStudy.items['0'].fields.thumbnail.sys.id} keyCode={caseStudy.items['0'].fields.featuredImage.sys.id + caseStudy.items['0'].fields.date} />

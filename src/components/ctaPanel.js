@@ -19,16 +19,23 @@ const CtaWrap = styled.div`
     justify-content: center;
     border-radius: 4px;
     background-image: linear-gradient(-229deg, #B993D6 3%, #8CA6DB 98%);
-    padding: 96px 20%;
+    padding: 24px;
+    @media only screen and (min-width: 768px) {
+        padding: 96px 20%;
+    }
 `
 
 const CtaTitle = styled.h2`
-    font-size: 36px;
+    font-size: 24px;
     color: #FFFFFF;
-    line-height: 48px;
+    line-height: 1.3;
     text-align center;
     margin-top: 0;
     margin-bottom: 16px;
+    @media only screen and (min-width: 768px) {
+        font-size: 36px;
+        line-height: 48px;
+    }
 `
 
 const CtaSub = styled.p`
@@ -36,11 +43,14 @@ const CtaSub = styled.p`
     text-align center;
     margin: 0;
     margin-bottom: 32px;
-    padding: 0 80px;
+    padding: 0;
     box-sizing: border-box;
+    @media only screen and (min-width: 768px) {
+        padding: 0 80px;
+    }
 `
 
-const Button = styled.a`
+const Button = styled(Link)`
   display: inline-block;
   border-radius: 30px;
   padding: 12px 0;
@@ -73,10 +83,10 @@ class CtaPanel extends Component {
                     Have a project you think I might be interested in? 
                 </CtaTitle>
                 <CtaSub>
-                    Currently working as a Front-end Developer at Quba, an agency based in Sheffield. I have worked at a number of different agencies and a range of projects.
+                    Please get in touch. I am always looking for exciting projects to work on.
                 </CtaSub>
                 <Button 
-                href="#na"
+                to={"/contact"}
                 primary 
             >
                 Get in touch

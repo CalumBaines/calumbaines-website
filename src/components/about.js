@@ -30,9 +30,12 @@ const ParaHalf = styled.p`
     font-size: 18px;
     line-height: 24px;
     padding: 0 30px;
-    column-count: 2;
+    column-count: 1;
     column-gap: 30px;
     text-align: left;
+    @media only screen and (min-width: 768px) {
+        column-count: 2;
+    }
 
     br {
         content: "";
@@ -72,11 +75,11 @@ class About extends Component {
                     <Para><b>I’m a Designer and Developer who loves solving problems.</b></Para>
                     <Para>Working in the industry for the last five years I have been involved in a great range of projects and worked at a number of agencies based in the UK. </Para>
                 </Container>
-                <AboutImg>
+                {/* <AboutImg>
                     <img src={calumLrg} />
-                </AboutImg>
+                </AboutImg> */}
                 <Container>
-                    <ParaHalf>Currently working as a Front-end Developer at an agency based in Sheffield. I have worked at a number of different agencies and been involved in a range of projects over the years. My experiences with clients range from global corporations to local businesses, including: NHS, Residence One, Taylor Wimpey, InterLED, Joris Ide, Imeche, Efficiency North, Ruddocks and Kingspan. <br/> I’m always on the lookout for exciting projects and great people to work with, please get in touch if you think we could work together in anyway or even want to contact me about something random. <br /> My work revolves around one simple rule ‘KEEP IT SIMPLE’. <br />In this industry we often try to over complicate everything to achieve the best but in reality the most simple ideas are often the best. <br /> I have a passion for creating reusable, accessible and modular code, using the latest techniques and technology I am constantly improving my skills and looking for better ways to work. </ParaHalf>
+                    <ParaHalf>Currently working as a Front-end Developer at an agency based in Sheffield. I have worked at a number of different agencies and been involved in a range of projects over the years. My experiences with clients range from global corporations to local businesses, including: NHS, Residence One, Taylor Wimpey, InterLED, Joris Ide, Imeche, Efficiency North, Ruddocks and Kingspan. <br/> I’m always on the lookout for exciting projects and great people to work with, please get in touch if you think we could work together in anyway. <br />In this industry we often try to over complicate things but in reality the most simple ideas are often the best and this is something that I always try to push in any project I work on. <br /> I have a passion for creating reusable, accessible and modular code, using the latest techniques and technology. I am constantly improving my skills and looking for better ways to work. </ParaHalf>
                 </Container>
                 <LogoGrid />
                 <SubscribeForm />                
